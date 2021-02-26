@@ -11,7 +11,20 @@ namespace ConsoleUI
         {
             // CarList();
             // CarAdded();
+            // CarDeleted();
 
+
+        }
+
+        private static void CarDeleted()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            Car car = new Car()
+            {
+                CarId = 1003,
+
+            };
+            carManager.Deleted(car);
         }
 
         private static void CarAdded()
@@ -27,29 +40,42 @@ namespace ConsoleUI
                 FuelId = 4,
                 ModelId = 10,
                 SegmentId = 3,
-                DailyPrice = 450,
+                DailyPrice = 0,
             };
             carManager.Add(car);
-            Console.WriteLine("Yeni Araba Eklendi.");
+            
         }
 
         private static void CarList()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetails())
+            var result = carManager.GetCarDetails();
+            if (result.Success == true)
             {
-                Console.WriteLine(
-                    "Marka: " + car.BrandName + "\n" +
-                    "Model: " + car.ModelName + "\n" +
-                    "Kasa Tipi: " + car.CategoryName + "\n" +
-                    "Şanzıman Tipi: " + car.GearName + "\n" +
-                    "Renk: " + car.ColorName + "\n" +
-                    "Segment: " + car.SegmentName + "\n" +
-                    "Yakıt: " + car.FuelName + "\n" +
-                    "Kiralama Koşulu: " + car.ConditionName + "\n" +
-                    "Günlük Kiralama Ücreti : " + car.DailyPrice + "\n"
-                    );
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine
+                        (
+                        "Marka: " + car.BrandName + "\n" +
+                        "Model: " + car.ModelName + "\n" +
+                        "Kasa Tipi: " + car.CategoryName + "\n" +
+                        "Şanzıman Tipi: " + car.GearName + "\n" +
+                        "Renk: " + car.ColorName + "\n" +
+                        "Segment: " + car.SegmentName + "\n" +
+                        "Yakıt: " + car.FuelName + "\n" +
+                        "Kiralama Koşulu: " + car.ConditionName + "\n" +
+                        "Günlük Kiralama Ücreti : " + car.DailyPrice + "\n"
+                        );
+
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+
+            }
+            
+            
         }
     }
 }
