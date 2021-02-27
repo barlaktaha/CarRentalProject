@@ -12,8 +12,47 @@ namespace ConsoleUI
             // CarList();
             // CarAdded();
             // CarDeleted();
+            // UserAdded();
+            // CustomerAdded();
+            // RentalAdded();
 
 
+        }
+
+        private static void RentalAdded()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            Rental rental = new Rental()
+            {
+                CarId = 1,
+                CustomerId = 2,
+                RentDate = new DateTime(2021, 02, 27),
+            };
+            rentalManager.Add(rental);
+        }
+
+        private static void CustomerAdded()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            Customer customer = new Customer()
+            {
+                CompanyName = "BGS Giyim",
+                UserId = 1,
+            };
+            customerManager.Add(customer);
+        }
+
+        private static void UserAdded()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            User user = new User()
+            {
+                FirstName = "Taha",
+                LastName = "Barlak",
+                Email = "irtibat.tahabarlak@gmail.com",
+                Password = "12345",
+            };
+            userManager.Add(user);
         }
 
         private static void CarDeleted()

@@ -21,6 +21,9 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Gear> GearType { get; set; }
         public DbSet<Model> Models { get; set; }
         public DbSet<Segment> Segments { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Rental> Rentals { get; set; }
 
     }
 }
