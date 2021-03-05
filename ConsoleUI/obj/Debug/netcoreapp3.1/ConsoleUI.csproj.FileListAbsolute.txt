@@ -60,3 +60,8 @@ C:\Users\TB\Desktop\CarRentalProject\ConsoleUI\obj\Debug\netcoreapp3.1\ConsoleUI
 C:\Users\TB\Desktop\CarRentalProject\ConsoleUI\obj\Debug\netcoreapp3.1\ConsoleUI.dll
 C:\Users\TB\Desktop\CarRentalProject\ConsoleUI\obj\Debug\netcoreapp3.1\ConsoleUI.pdb
 C:\Users\TB\Desktop\CarRentalProject\ConsoleUI\obj\Debug\netcoreapp3.1\ConsoleUI.genruntimeconfig.cache
+C:\Users\TB\Desktop\CarRentalProject\ConsoleUI\bin\Debug\netcoreapp3.1\Autofac.dll
+C:\Users\TB\Desktop\CarRentalProject\ConsoleUI\bin\Debug\netcoreapp3.1\Autofac.Extensions.DependencyInjection.dll
+C:\Users\TB\Desktop\CarRentalProject\ConsoleUI\bin\Debug\netcoreapp3.1\Autofac.Extras.DynamicProxy.dll
+C:\Users\TB\Desktop\CarRentalProject\ConsoleUI\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\TB\Desktop\CarRentalProject\ConsoleUI\bin\Debug\netcoreapp3.1\FluentValidation.dll
