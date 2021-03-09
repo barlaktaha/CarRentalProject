@@ -19,5 +19,9 @@ namespace Business.Constans
         public static string CustomerUpdated = "Müşteri Güncellendi";
         public static string RentalUpdated = "Kiralama Bilgisi Güncellendi";
         public static string RentalAdded = "Kiralama Bilgisi Eklendi";
+        public static string CarImagesAdded = "Araba Fotoğrafı Eklendi.";
+        public static string CarImagesDeleted = "Araba Fotoğrafı Silindi.";
+        public static string CarImagesUpdated = "Araba Fotoğrafı Silindi.";
+        internal static string CarImagesListed = "Araba Fotoğrafları Listelendi ";
     }
 }
