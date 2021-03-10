@@ -7,14 +7,14 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface ICarImagesService
+    public interface ICarImageService
     {
 
-        IDataResult<List<CarImages>> GetAll();
-        IResult Add(IFormFile file, CarImages carImages);
-        IResult Update(IFormFile file, CarImages carImages);
-        IResult Delete(CarImages carImages);
-        IDataResult<CarImages> Get(int id);
+        IDataResult<List<CarImage>> GetAll();
+        IResult Add(IFormFile file, CarImage carImage);
+        IResult Update(IFormFile file, CarImage carImage);
+        IResult Delete(CarImage carImage);
+        IDataResult<CarImage> Get(int ImageId);
 
 
     }

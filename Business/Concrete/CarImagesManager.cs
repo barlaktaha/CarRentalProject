@@ -11,48 +11,48 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class CarImagesManager : ICarImagesService
+    public class CarImageManager : ICarImageService
     {
-        ICarImagesDal _carImagesDal;
+        ICarImageDal _carImageDal;
 
-        public CarImagesManager(ICarImagesDal carImagesDal)
+        public CarImageManager(ICarImageDal carImageDal)
         {
-            _carImagesDal = carImagesDal;
+            _carImageDal = carImageDal;
         }
 
-        public IResult Add(IFormFile file, CarImages carImages)
+        public IResult Add(IFormFile file, CarImage carImage)
         {
-            carImages.ImagePath = FileHelper.Add(file);
-            carImages.Date = DateTime.Now;
-            _carImagesDal.Add(carImages);
-            return new SuccessResult(Messages.CarImagesAdded);
+            carImage.ImagePath = FileHelper.Add(file);
+            carImage.Date = DateTime.Now;
+            _carImageDal.Add(carImage);
+            return new SuccessResult(Messages.CarImageAdded);
         }
 
-        public IResult Delete(CarImages carImages)
+        public IResult Delete(CarImage carImage)
         {
-            FileHelper.Delete(carImages.ImagePath);
-            _carImagesDal.Delete(carImages);
-            return new SuccessResult(Messages.CarImagesDeleted);
+            FileHelper.Delete(carImage.ImagePath);
+            _carImageDal.Delete(carImage);
+            return new SuccessResult(Messages.CarImageDeleted);
             
         }
 
-        public IDataResult<List<CarImages>> GetAll()
+        public IDataResult<List<CarImage>> GetAll()
         {
-            return new SuccessDataResult<List<CarImages>>(_carImagesDal.GetAll(), Messages.CarImagesListed);
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(), Messages.CarImagesListed);
         }
 
   
 
-        public IResult Update(IFormFile file, CarImages carImages)
+        public IResult Update(IFormFile file, CarImage carImage)
         {
-            carImages.ImagePath = FileHelper.Update(_carImagesDal.Get(p => p.ImagesId == carImages.ImagesId).ImagePath, file);
-            carImages.Date = DateTime.Now;
-            _carImagesDal.Update(carImages);
-            return new SuccessResult(Messages.CarImagesUpdated);
+            carImage.ImagePath = FileHelper.Update(_carImageDal.Get(p => p.ImageId == carImage.ImageId).ImagePath, file);
+            carImage.Date = DateTime.Now;
+            _carImageDal.Update(carImage);
+            return new SuccessResult(Messages.CarImageUpdated);
         }
-        public IDataResult<CarImages> Get(int id)
+        public IDataResult<CarImage> Get(int ImageId)
         {
-            return new SuccessDataResult<CarImages>(_carImagesDal.Get(p => p.ImagesId == id));
+            return new SuccessDataResult<CarImage>(_carImageDal.Get(p => p.ImageId == ImageId));
         }
     }
 }
