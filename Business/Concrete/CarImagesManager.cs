@@ -45,14 +45,14 @@ namespace Business.Concrete
 
         public IResult Update(IFormFile file, CarImage carImage)
         {
-            carImage.ImagePath = FileHelper.Update(_carImageDal.Get(p => p.ImageId == carImage.ImageId).ImagePath, file);
+            carImage.ImagePath = FileHelper.Update(_carImageDal.Get(p => p.CarImageId == carImage.CarImageId).ImagePath, file);
             carImage.Date = DateTime.Now;
             _carImageDal.Update(carImage);
             return new SuccessResult(Messages.CarImageUpdated);
         }
-        public IDataResult<CarImage> Get(int ImageId)
+        public IDataResult<CarImage> Get(int CarImageId)
         {
-            return new SuccessDataResult<CarImage>(_carImageDal.Get(p => p.ImageId == ImageId));
+            return new SuccessDataResult<CarImage>(_carImageDal.Get(p => p.CarImageId == CarImageId));
         }
     }
 }
