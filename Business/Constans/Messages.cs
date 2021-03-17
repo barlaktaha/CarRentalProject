@@ -21,7 +21,9 @@ namespace Business.Constans
         public static string RentalAdded = "Kiralama Bilgisi Eklendi";
         public static string CarImageAdded = "Araba Fotoğrafı Eklendi.";
         public static string CarImageDeleted = "Araba Fotoğrafı Silindi.";
-        public static string CarImageUpdated = "Araba Fotoğrafı Silindi.";
-        internal static string CarImagesListed = "Araba Fotoğrafları Listelendi ";
+        public static string CarImageUpdated = "Araba Fotoğrafı Güncellendi.";
+        public static string CarImagesListed = "Araba Fotoğrafları Listelendi ";
+        public static string CarCountOfCategoryError = "HatchBack Araba Kategorisi Max. Limite Ulaştı.";
+
     }
 }
