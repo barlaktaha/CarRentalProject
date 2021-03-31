@@ -17,5 +17,6 @@ namespace Entities.Concrete
         public int SegmentId { get; set; }
         public int ModelId { get; set; }
         public int DailyPrice { get; set; }
+        public int ModelYear { get; set; }
     }
 }

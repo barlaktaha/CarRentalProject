@@ -71,3 +71,4 @@ C:\Users\TB\Desktop\CarRentalProject\WebAPI\bin\Debug\netcoreapp3.1\Autofac.Exte
 C:\Users\TB\Desktop\CarRentalProject\WebAPI\bin\Debug\netcoreapp3.1\Autofac.Extras.DynamicProxy.dll
 C:\Users\TB\Desktop\CarRentalProject\WebAPI\bin\Debug\netcoreapp3.1\Castle.Core.dll
 C:\Users\TB\Desktop\CarRentalProject\WebAPI\bin\Debug\netcoreapp3.1\FluentValidation.dll
+C:\Users\TB\Desktop\CarRentalProject\WebAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

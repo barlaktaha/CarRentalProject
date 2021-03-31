@@ -9,8 +9,9 @@ namespace Business.Abstract
 {
     public interface ICarService
     {
-        IResult Deleted(Car entity);
+        IResult Delete(Car entity);
         IResult Add(Car entity);
+        IResult Update(Car entity);
         IDataResult<List<Car>> GetAll();
         IDataResult<List<Car>> GetAllByBrandId(int id);
         IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max);

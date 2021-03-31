@@ -41,6 +41,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  BrandName = b.BrandName, ModelName = m.ModelName, CategoryName=y.CategoryName,
                                  GearName = g.GearName, ColorName = r.ColorName, SegmentName = s.SegmentName,
                                  FuelName = f.FuelName, ConditionName = n.ConditionName, DailyPrice = c.DailyPrice,
+                                 ModelYear = c.ModelYear,
                              };
 
                               return result.ToList();

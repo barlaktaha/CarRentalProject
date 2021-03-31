@@ -16,5 +16,6 @@ namespace Entities.DTOs
         public string FuelName { get; set; }
         public string ConditionName{ get; set; }
         public int DailyPrice { get; set; }
+        public int ModelYear { get; set; }
     }
 }
