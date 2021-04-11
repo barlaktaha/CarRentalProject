@@ -12,6 +12,7 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(c => c.DailyPrice).NotEmpty();
             RuleFor(c => c.ModelYear).NotEmpty();
+            RuleFor(c => c.DailyPrice).GreaterThanOrEqualTo(100);
             
         }
     }

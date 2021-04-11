@@ -13,9 +13,11 @@ namespace Business.Abstract
         IResult Add(Car entity);
         IResult Update(Car entity);
         IDataResult<List<Car>> GetAll();
-        IDataResult<List<Car>> GetAllByBrandId(int id);
         IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max);
         IDataResult<List<CarDetailDto>> GetCarDetails();
-
+        IDataResult<List<CarDetailDto>> GetAllByBrand(string brandName);
+        IDataResult<List<CarDetailDto>> GetAllByColor(string colorName);
+        IDataResult<List<CarDetailDto>> GetAllByBrandId(int brandId);
+        IDataResult<List<CarDetailDto>> GetCarIdDetails(int carId);
     }
 }

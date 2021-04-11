@@ -13,7 +13,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, CarRentalDBContext>, ICarDal
     {
-        public List<CarDetailDto> GetCarDetails()
+        public List<CarDetailDto> GetCarDetails(Expression<Func<CarDetailDto, bool>> filter = null)
         {
             using(CarRentalDBContext context = new CarRentalDBContext())
             {
@@ -34,6 +34,8 @@ namespace DataAccess.Concrete.EntityFramework
                              on c.FuelId equals f.FuelId
                              join n in context.Conditions
                              on c.ConditionId equals n.ConditionId
+                             join i in context.CarImages
+                             on c.CarId equals i.CarId
                              
 
                              select new CarDetailDto
@@ -41,10 +43,12 @@ namespace DataAccess.Concrete.EntityFramework
                                  BrandName = b.BrandName, ModelName = m.ModelName, CategoryName=y.CategoryName,
                                  GearName = g.GearName, ColorName = r.ColorName, SegmentName = s.SegmentName,
                                  FuelName = f.FuelName, ConditionName = n.ConditionName, DailyPrice = c.DailyPrice,
-                                 ModelYear = c.ModelYear,
+                                 ModelYear = c.ModelYear, ImagePath = i.ImagePath, CarId = c.CarId, BrandId = b.BrandId,
+                                 CarImageId = i.CarImageId, CategoryId = y.CategoryId, ColorId = r.ColorId, ConditionId = n.ConditionId,
+                                 FuelId = f.FuelId, GearId = g.GearId, ModelId = m.ModelId, SegmentId = s.SegmentId 
                              };
 
-                              return result.ToList();
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
             }
         }
     }

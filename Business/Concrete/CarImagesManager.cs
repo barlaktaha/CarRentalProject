@@ -9,6 +9,8 @@ using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -48,7 +50,12 @@ namespace Business.Concrete
 
         public IResult Update(IFormFile file, CarImage carImage)
         {
-            carImage.ImagePath = FileHelper.Update(_carImageDal.Get(p => p.CarImageId == carImage.CarImageId).ImagePath, file);
+            var oldPath = Path.GetFullPath(Path.Combine
+                (AppContext.BaseDirectory, "..\\..\\..\\wwwroot"))
+                + _carImageDal.Get(p => p.CarImageId == carImage.CarImageId).ImagePath;
+
+            carImage.ImagePath = FileHelper.Update(oldPath, file);
+
             carImage.Date = DateTime.Now;
             _carImageDal.Update(carImage);
             return new SuccessResult(Messages.CarImageUpdated);
@@ -56,6 +63,31 @@ namespace Business.Concrete
         public IDataResult<CarImage> Get(int CarImageId)
         {
             return new SuccessDataResult<CarImage>(_carImageDal.Get(p => p.CarImageId == CarImageId));
+        }
+
+        public IDataResult<List<CarImage>> GetImagesByCarId(int CarImageId)
+        {
+            return new SuccessDataResult<List<CarImage>>(CheckIfCarImageNull(CarImageId).Data);
+        }
+
+        private IDataResult<List<CarImage>> CheckIfCarImageNull(int id)
+        {
+            try
+            {
+                string path = @"\uploads\default.jpg";
+                var result = _carImageDal.GetAll(c => c.CarId == id).Any();
+                if (!result)
+                {
+                    List<CarImage> carImage = new List<CarImage>();
+                    carImage.Add(new CarImage { CarId = id, ImagePath = path, Date = DateTime.Now });
+                    return new SuccessDataResult<List<CarImage>>(carImage);
+                }
+            }
+            catch (Exception exception)
+            {
+                return new ErrorDataResult<List<CarImage>>(exception.Message);
+            }
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == id));
         }
     }
 }
